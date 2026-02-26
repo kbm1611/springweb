@@ -18,7 +18,7 @@ public class Exam3 {
                     5. build.gradle 새로고침
         */
         StudentDto studentDto1 = new StudentDto();
-        StudentDto studentDto2 = new StudentDto(2, "유재석");
+        StudentDto studentDto2 = new StudentDto(1, "유재석");
         studentDto2.getSname();
         studentDto2.setSname("강호동");
         studentDto2.toString();
@@ -28,6 +28,8 @@ public class Exam3 {
         // 해결책 : 빌더패턴 ( 객체 만드는 패턴 = 유연성 제공 )
         // 클래스명.builder().멤버변수명(값).멤버변수명(값).build()
         StudentDto studentDto4 = StudentDto.builder().sno(1).sname("유재석").build();
+        StudentDto studentDto5 = StudentDto.builder().sname("유재석").sno(2).build();
+        StudentDto studentDto6 = StudentDto.builder().sname("유재석").build();
     }
 }
 
@@ -36,7 +38,6 @@ public class Exam3 {
 @Getter // getter 메소드 제공
 @Setter // setter 메소드 제공
 @ToString // ToString 메소드 재공
-@RequiredArgsConstructor // final 매개변수 생성자 자동 생성
 //@Data = 위에 전부 다 합친 거
 @Builder // 빌더패턴 사용
 class StudentDto{
@@ -44,6 +45,5 @@ class StudentDto{
     private int sno;
     private String sname;
     // 2. 빈생성자, 풀 생성자
-
     // 3. getter/setter, toString
 }
