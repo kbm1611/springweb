@@ -1,6 +1,6 @@
 
 // 출석 등록
-const obj1 = {"ano" : 2,"studentName" : "홍길동", "date" : "2026-02-26", "status" : "출석"};
+const obj1 = {"studentName" : "홍길동", "date" : "2026-02-26", "status" : "출석"};
 const func1 = async( ) => {
     try{
         const response =
