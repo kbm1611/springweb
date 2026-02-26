@@ -24,13 +24,13 @@ public class BoardController {
     }
 
     @GetMapping("/board/detail")
-    public BoardDto boardDetail(int bno){
+    public BoardDto boardDetail(@RequestParam int bno){
         BoardDto boardDto = new BoardDto(1, "안녕하세요", "유재석");
         return boardDto;
     }
 
     @DeleteMapping("/board")
-    public boolean boardDelete(int bno){
+    public boolean boardDelete(@RequestParam int bno){
         return true;
     }
 
