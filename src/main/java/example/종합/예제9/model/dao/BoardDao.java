@@ -1,9 +1,14 @@
 package example.종합.예제9.model.dao;
 
+import example.종합.예제9.model.dto.BoardDto;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class BoardDao {
@@ -25,6 +30,70 @@ public class BoardDao {
         }
     }
 
+    // 1] 전체조회
+    public List<BoardDto> findAll() {
+        List<BoardDto> boardDtoList = new ArrayList<>();
+        try {
+            String sql = "select * from board";
+            PreparedStatement ps = conn.prepareStatement( sql );
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
 
+                BoardDto boardDto = new BoardDto(
+                        rs.getInt("bno"), rs.getString("bcontent"),
+                        rs.getString("bwriter"), rs.getString("bdate"));
+                boardDtoList.add(boardDto);
+
+            }
+        } catch (Exception e) { System.out.println(e); }
+        return boardDtoList;
+    }
+
+    // 2] 게시물 등록
+    public boolean write(BoardDto boardDto){
+        try {
+            String sql = "insert into board( bcontent , bwriter ) values( ? , ?)";
+            PreparedStatement ps = conn.prepareStatement( sql );
+            ps.setString( 1, boardDto.getBcontent() );
+            ps.setString( 2, boardDto.getBwriter() );
+
+            int count = ps.executeUpdate();
+
+            if(count == 1){ return true; }
+            else{ return false; }
+        } catch (Exception e) { System.out.println(e); }
+        return false;
+    }
+
+    // 3] 게시물 개별 수정
+    public boolean update(BoardDto boardDto){
+        try {
+            String sql = "update board set bcontent = ? where bno = ?";
+            PreparedStatement ps = conn.prepareStatement( sql );
+            ps.setString( 1, boardDto.getBcontent() );
+            ps.setInt( 2, boardDto.getBno() );
+
+            int count = ps.executeUpdate();
+
+            if(count == 1){ return true; }
+            else{ return false; }
+        } catch (Exception e) { System.out.println(e); }
+        return false;
+    }
+
+    // 4] 게시물 삭제
+    public boolean delete(int bno){
+        try {
+            String sql = "delete from board where bno = ?";
+            PreparedStatement ps = conn.prepareStatement( sql );
+            ps.setInt( 1, bno );
+
+            int count = ps.executeUpdate();
+
+            if(count == 1){ return true; }
+            else{ return false; }
+        } catch (Exception e) { System.out.println(e); }
+        return false;
+    }
 
 }

@@ -8,5 +8,30 @@
     <h3> 메인페이지 </h3>
     <p> http://ip주소:WAS번호/(static)이하폴더경로 </p>
     <p> http://localhost:8080/종합예제9/index.html </p>
+
+    <h3> 종합예제9 </h3>
+    <div>
+        <div>
+            <h3> 입력 구역 </h3>
+            내용 : <input id = "bcontent" /> <br/>
+            작성자 : <input id = "bwriter" /> <br/>
+            <button onclick = "onWrite()"> 등록하기 </button>
+        </div>
+        <div>
+            <h3> 출력 구역 </h3>
+            <table id = "boardTable">
+                <thead>
+                    <tr> <th> 번호 </th> <th> 내용 </th> <th> 작성자 </th> <th> 작성일 </th> <th> 비고 </th></tr>
+                </thead>
+                <tbody>
+                    <tr> <td> 1 </td> <td> 안녕하세요 </td> <td> 유재석 </td>
+                    <td> 2026-02-27 </td> <td> <button>삭제</button> <button>내용수정</button> </td> </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- AXIOS CND 설치-->
+    <script src="index.js"></script> <!--내가 만든 JS-->
 </body>
 </html>
