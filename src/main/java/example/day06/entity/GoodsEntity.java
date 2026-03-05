@@ -21,8 +21,18 @@ public class GoodsEntity extends BaseTime {
     // @Column // 생략가능시 : 자바의 타입 --> SQL 타입, 자바의 변수명 --> SQL 필드명
     private Integer gprice; // 제품가격
 
-    @Column( columnDefinition = "vachar(100) default '제품설명' not null") // 수동
+    @Column( columnDefinition = "varchar(100) default '제품설명' not null") // 수동
     private String gdesc; // 제품설명
+
+    // ** ENTITY --> DTO 반환 함수
+    public GoodsDto toDto(){
+        return GoodsDto.builder()
+                .gno( gno ).gname( gname )
+                .gprice( gprice ).gdesc( gdesc )
+                .createDate( getCreateDate().toString() )
+                .updateDate( getUpdateDate().toString() )
+                .build();
+    }
 }
 /*
     @Id : primary key
