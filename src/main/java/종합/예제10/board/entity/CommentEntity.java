@@ -15,7 +15,7 @@ public class CommentEntity extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cno;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // M:1 관계
     @JoinColumn(name = "bno", foreignKey = @ForeignKey(name = "FK_BOARD_COMMENT"))
     private BoardEntity boardEntity;
 
