@@ -19,7 +19,7 @@ public class CommentEntity extends BaseTime {
     @JoinColumn(name = "bno", foreignKey = @ForeignKey(name = "FK_BOARD_COMMENT"))
     private BoardEntity boardEntity;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "longtext not null")
     private String ccontent;
 
     @Column(nullable = false)
