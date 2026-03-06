@@ -25,6 +25,10 @@ public class CommentEntity extends BaseTime {
     @Column(nullable = false)
     private String cwriter;
 
+    public void setBoardByBno(Integer bno){
+        boardEntity = BoardEntity.builder().bno(bno).build();
+    }
+
     public CommentDto toDto(){
         return CommentDto.builder().cno(cno).bno( boardEntity.getBno() )
                 .cwriter(cwriter).ccontent(ccontent)

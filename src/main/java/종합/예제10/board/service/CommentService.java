@@ -25,15 +25,11 @@ public class CommentService {
 
     //등록
     public boolean cmtSvc(CommentDto commentDto){
-        Optional<BoardEntity> optional = boardRepo.findById(commentDto.getBno());
-        if( optional.isPresent() ){
-            BoardEntity boardEntity = optional.get();
-            CommentEntity commentEntity = commentDto.toEntity();
-            commentEntity.setBoardEntity(boardEntity);
-            return commentRepo.save(commentEntity).getCno() > 0;
-        }else{
-           return false;
-        }
+        CommentEntity commentEntity = commentDto.toEntity();
+
+        commentEntity.setBoardByBno(commentDto.getBno());
+
+        return commentRepo.save(commentEntity).getCno() > 0;
     }
 
     //해당하는 게시판에 맞춰 조회
