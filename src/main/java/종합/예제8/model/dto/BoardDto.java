@@ -1,4 +1,4 @@
-package example.종합.예제8.model.dto;
+package 종합.예제8.model.dto;
 
 public class BoardDto {
     int bno;
