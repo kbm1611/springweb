@@ -16,7 +16,9 @@ public class EnrollDto {
     private Integer enrollId;
     private String status;
     private Integer courseId;
+    private String courseName;
     private Integer studentId;
+    private String studentName;
 
     private String createAt;
     private String updateAt;
