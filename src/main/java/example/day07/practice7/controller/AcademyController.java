@@ -32,7 +32,7 @@ public class AcademyController {
         return academySvc.enrollAdd(enrollDto);
     }
 
-    @GetMapping
+    @GetMapping("/enroll")
     public List<EnrollDto> findAll(@RequestParam Integer enrollId ){
         return academySvc.findAll(enrollId);
     }

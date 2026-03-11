@@ -52,7 +52,7 @@ public class AcademyService {
         Optional<StudentEntity> studentEntity = studentRepo.findById( enrollDto.getStudentId() );
 
         if( courseEntity.isPresent() && studentEntity.isPresent() ){
-            EnrollEntity enrollEntity = EnrollEntity.builder().courseEntity(courseEntity.get()).studentEntity(studentEntity.get()).build();
+            EnrollEntity enrollEntity = EnrollEntity.builder().status(enrollDto.getStatus()).courseEntity(courseEntity.get()).studentEntity(studentEntity.get()).build();
 
             return enrollRepo.save( enrollEntity ).getEnrollId() > 0;
         }else{
