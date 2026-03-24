@@ -1,10 +1,10 @@
-package springweb.dto;
+package springweb.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import springweb.entity.MemberEntity;
+import springweb.member.entity.MemberEntity;
 
 @NoArgsConstructor@AllArgsConstructor@Data@Builder
 public class MemberDto {
@@ -19,7 +19,7 @@ public class MemberDto {
     // DTO --> ENTITY 저장/수정
     public MemberEntity toEntity(){
         return MemberEntity.builder()
-                .mid( mid )
+                .mid(mid)
                 .mpwd(mpwd)
                 .mname(mname)
                 .build();

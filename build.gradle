@@ -31,6 +31,7 @@ dependencies {
     implementation 'io.github.bonigarcia:webdrivermanager:6.3.3' // 7] 셀리니움( 크롬브라우저 조작 )
     implementation 'org.springframework.boot:spring-boot-starter-webflux' // 서버간의 통신을 위한
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.21.1' // xml 포맷변환
+    implementation 'org.springframework.security:spring-security-crypto:6.4.4' // bcrypt 해시함수
 }
 
 tasks.named('test') {
