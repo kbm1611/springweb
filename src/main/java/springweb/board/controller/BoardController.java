@@ -43,6 +43,17 @@ public class BoardController {
 
     // [1-3] 회우너제 글등록 + 토큰 정보 + 첨부파일
     @PostMapping("/addpost3")
+    public ResponseEntity<?> addPost3(BoardDto boardDto, @RequestHeader("Authorization") String token){
+        // 1] @RequestBody 사용하지 않는다. 왜? 첨부파일 매핑하기 위해
+        // 2] dto에 MultipartFile 인터페이스 포함한다. private MultipartFile uploadFile; // 업로드용도
+        if(token == null || !token.startsWith("Bearer")) return ResponseEntity.ok(false);
+        token = token.replace("Bearer ", "");
+
+        String loginMid = jwtService.getclaim(token);
+        if(loginMid == null) return ResponseEntity.ok( false );
+        boolean result = boardSerivce.addPost(boardDto, loginMid);
+        return ResponseEntity.ok( result );
+    }
 
     // [2-1] 내 글 확인(세션)
     @GetMapping("/mypost")

@@ -12,6 +12,6 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     // [1] 아이디로 엔티티 찾기
     Optional<MemberEntity> findByMid(String mid );
     // vs
-    // @Query(value = "select * from member where mid ="
+    // @Query(value = "select * from member where mid = :mid",nativeQuery = true)
     // MemberEntity query(String mid);
 }
