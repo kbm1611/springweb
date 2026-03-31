@@ -35,7 +35,13 @@ import App from './App.jsx'
 // )
 
 // chapter9 예제
-import Exam2 from './chapter9/Exam2.jsx'
+// import Exam2 from './chapter9/Exam2.jsx'
+// createRoot(document.querySelector('#root')).render(
+//     <Exam2 />
+// )
+
+// chapter9 예제
+import Exam1 from './chapter10/Exam1.jsx'
 createRoot(document.querySelector('#root')).render(
-    <Exam2 />
+    <Exam1 />
 )
