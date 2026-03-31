@@ -40,8 +40,18 @@ import App from './App.jsx'
 //     <Exam2 />
 // )
 
-// chapter9 예제
-import Exam1 from './chapter10/Exam1.jsx'
+// // chapter10 예제
+// import Exam1 from './chapter10/Exam1.jsx'
+// createRoot(document.querySelector('#root')).render(
+//     <Exam1 />
+// )
+
+// // chapter11 예제
+import Exam2 from './chapter11/Exam2.jsx'
+import {BrowserRouter} from 'react-router-dom'; // [1] 라이브러리 import하기
+// [2] 최초 렌더링 되는 컴포넌트에 BrowerRouter 감싸기.
 createRoot(document.querySelector('#root')).render(
-    <Exam1 />
+    <BrowserRouter>
+        <Exam2 />
+    </BrowserRouter>
 )

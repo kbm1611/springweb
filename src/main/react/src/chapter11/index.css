@@ -1,0 +1,8 @@
+*{
+    margin: 5px;
+}
+.active{ /* 클래스 선택자로 스타일 정의 */
+    background-color: aquamarine;
+    font-weight: bold;
+    color: red;
+}
