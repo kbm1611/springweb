@@ -5,7 +5,7 @@ function RandomUser(props){
     const[myJson, setMyJson] = useState({results:[]});
 
     const axiosApi = async() =>{
-        const response = await axios.get('https://api.randomuser.me?results=10'); // 10개 데이터 요청
+        const response = await axios.get('https://api.randomuser.me?results=20'); // 10개 데이터 요청
         const data = response.data;
         console.log( data );
         setMyJson( data );
@@ -51,9 +51,9 @@ export default function ExternalApiFetcher(props){
         <RandomUser onProfile={(data)=>{
             console.log(data);
             let info = `전화번호:${data.cell}
-            성별:${data.gender}
-            username:${data.login.username}
-            password:${data.login.password}`;
+            성별: ${data.gender}
+            username: ${data.login.username}
+            password: ${data.login.password}`;
             alert(info); // 경고창으로 내용 출력
         }}></RandomUser>
     </>);
