@@ -27,6 +27,7 @@ function RandomUser(props){
                 <td>{data.name.title} {data.name.first} {data.name.last}</td>
                 <td>{data.nat}</td>
                 <td>{data.email}</td>
+                <td>{data.dob.age}</td>
             </tr>
         );
     });
@@ -36,7 +37,7 @@ function RandomUser(props){
                 <thead>
                     <tr>
                         <th>사진</th><th>로그인</th><th>이름</th>
-                        <th>국가</th><th>Email</th>
+                        <th>국가</th><th>Email</th><th>나이</th>
                     </tr>
                 </thead>
                 <tbody>{trTag}</tbody>
