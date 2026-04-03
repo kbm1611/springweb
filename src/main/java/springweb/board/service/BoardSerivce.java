@@ -10,10 +10,8 @@ import springweb.member.entity.MemberEntity;
 import springweb.member.repository.MemberRepository;
 import springweb.util.FileService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
