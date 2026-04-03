@@ -6,9 +6,9 @@ export default function SignUp(props){
     const signup = async( e ) => {
         e.preventDefault(); // form 마크업의 기본 이벤트 제거
         // 1) 입력받은 값 가져오기
-        const mid = e.target.mid.value;
-        const mpwd = e.target.mpwd.value;
-        const mname = e.target.mname.value;
+        const mid = e.target.newMid.value;
+        const mpwd = e.target.newMpwd.value;
+        const mname = e.target.newMname.value;
         // 2) 객체 구성 : 전송할 내용
         const obj = { mid, mpwd, mname };
         // 3) axios 동기 통신
@@ -28,9 +28,9 @@ export default function SignUp(props){
         <div>
             <h3> 회원가입 페이지 </h3>
             <form onSubmit={signup} > {/* 통신함수 연동 */}
-                생성할 아이디 : <input name="mid" placeholder="아이디 입력" /> <br />
-                생성할 비밀번호 : <input name="mpwd" type="password" placeholder="비밀번호 입력" /> <br />
-                생성할 닉네임 : <input name="mname" placeholder="닉네임 입력" /> <br />
+                생성할 아이디 : <input name="newMid" placeholder="아이디 입력" /> <br />
+                생성할 비밀번호 : <input name="newMpwd" type="password" placeholder="비밀번호 입력" /> <br />
+                생성할 닉네임 : <input name="newMname" placeholder="닉네임 입력" /> <br />
                 <button type="submit"> 회원가입 </button>
                  {/* submit : 현재 form 안에 있는 마크업들 전송 이벤트 */}
              </form>
