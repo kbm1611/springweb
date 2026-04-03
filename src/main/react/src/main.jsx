@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+// import App from './App.jsx'
 
 // createRoot(document.getElementById('root')).render(
 //     <App />
@@ -56,11 +56,20 @@ import App from './App.jsx'
 //     </BrowserRouter>
 // )
 
-// // chapter12 예제
-import Exam1 from './chapter12/Exam1.jsx'
+// // // chapter12 예제
+// import Exam1 from './chapter12/Exam1.jsx'
+// import {BrowserRouter} from 'react-router-dom';
+// createRoot( root ).render(
+//     <BrowserRouter>
+//         <Exam1 />
+//     </BrowserRouter>
+// )
+
+// // reactweb 예제
+import App from './reactweb/App.jsx'
 import {BrowserRouter} from 'react-router-dom';
 createRoot( root ).render(
     <BrowserRouter>
-        <Exam1 />
+        <App />
     </BrowserRouter>
 )
