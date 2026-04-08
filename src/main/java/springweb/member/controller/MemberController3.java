@@ -43,8 +43,34 @@ public class MemberController3 {
     }
 
     // [3] 로그아웃
+    @GetMapping("/logout")
+    public ResponseEntity<?> logout( HttpServletResponse response){
+        // 1) 매개변수에 HttpServletResponse response 받는다.
 
-    // [4] 마이페이지
+        // 2) 삭제할 쿠키의 동일한 속성명으로 null 값 저장하는 쿠키 생성
+        Cookie cookie = new Cookie("token", null);
+        cookie.setMaxAge( 0 ); // 쿠키의 생명주기를 0초로 설정한다.
+        cookie.setPath("/");
+        // 3) 쿠키 반환
+        response.addCookie( cookie );
+
+        // 4) 값 반환
+        return ResponseEntity.ok( true );
+    }
+
+    // [4] 마이페이지 = 세션방식 ---> 토큰방식 변경 + 쿠키
+    @GetMapping("/my/info")
+    public ResponseEntity<?> myInfo(@CookieValue(value = "token", required = false) String token){
+        // @CookieValue : HTTP 요청의 cookie 정보 매핑
+        // 1] @CookieValue("token") String token 매개변수로 받는다. required = false 설정하면 필수 아님
+        // 2] 만약에 쿠키 값이 없으면 비로그인
+        if( token == null ) return ResponseEntity.ok( false );
+        // 3] 토큰에서 값(클레임) 추출
+        String mid = jwtService.getclaim( token );
+        if( mid == null ) return ResponseEntity.ok( false );
+        // 5] 토큰에서 꺼낸 값으로 회원정보 요청해서 반환
+        return ResponseEntity.ok( memberService.myInfo(mid) );
+    }
 }
 /*
 
@@ -61,5 +87,5 @@ public class MemberController3 {
     활용) 1) 세션은 서버에 저장하므로 *보안* 높지만 *대규모*서버에는 과부하 증가한다.
          2) 토큰은 세션/쿠키 없이 HTTP 사용하지 않으므로 웹/앱 통합 가능하다.
          3) 쿠키는 브라우저에 저장하므로 *보안* 낮지만 JWT와 같이 사용하며 서버에 과부하 낮을 수 있다.
-         즉] 앱(JWT), 웹(JWT/cookie)
+         즉] 앱(JWT), 웹(JWT/cookie)으로 일반적 사용된다.
  */

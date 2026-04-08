@@ -56,6 +56,18 @@ public class BoardController {
         return ResponseEntity.ok( result );
     }
 
+    // [1-4] 회원제 글등록 + 토큰 정보 + 첨부파일 + 쿠키
+    @PostMapping("/write4")
+    public ResponseEntity<?> write4(BoardDto boardDto, @CookieValue(value = "token", required = false ) String token){
+        if(token == null) return ResponseEntity.ok( false );
+
+        String loginMid = jwtService.getclaim( token );
+        if(loginMid == null) return ResponseEntity.ok(false );
+        boolean result = boardSerivce.addPost(boardDto, loginMid);
+        return ResponseEntity.ok( result );
+    }
+
+
     // [2-1] 내 글 확인(세션)
     @GetMapping("/mypost")
     public ResponseEntity<?> findAllMyPost(HttpSession session){

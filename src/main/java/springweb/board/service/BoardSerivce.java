@@ -39,11 +39,17 @@ public class BoardSerivce {
         }else return false;
     }
 
-    // 내가 쓴 글 조회
+    // 내가 쓴 글 전체 조회
     public List<BoardDto> findAllMyPost(String loginMid){
         return boardRepository
                 .findAllByMemberEntity_Mid(loginMid)
                 .stream().map(BoardEntity::toDto)
                 .toList();
+    }
+    // 개별 조회
+    public BoardDto findById(Long bno ){
+        return boardRepository.findById( bno )
+                .orElse( null ) // 엔티티 없으면 null값 반환
+                .toDto(); // 엔티티가 존재하면 dto 반환
     }
 }
