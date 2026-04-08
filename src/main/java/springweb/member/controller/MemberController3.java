@@ -9,8 +9,6 @@ import springweb.member.dto.MemberDto;
 import springweb.member.service.JWTService;
 import springweb.member.service.MemberService;
 
-import java.net.http.HttpResponse;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/member3")
